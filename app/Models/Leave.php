@@ -10,4 +10,12 @@ class Leave extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'user_id',
+        'start_date',
+        'end_date',
+        'reason',
+        'status'
+    ];
 }

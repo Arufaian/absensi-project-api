@@ -69,8 +69,34 @@ class AuthController extends Controller
 
     }
 
+    public function logoutAll(Request $request)
+    {
+        $user = $request -> user();
+        $user -> tokens() -> delete();
+
+        return response() -> json([
+            'message' => 'Berhasil logout dari semua perangkat'
+        ]);
+
+    }
+
     public function me(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    public function activeTokens(Request $request)
+    {
+        $tokens = $request -> user() -> tokens -> map(function ($token) {
+            return [
+                'name' => $token -> name,
+                'created_at' => $token -> created_at -> toDateTimeString(),
+                'last_used_at' =>optional($token -> last_used_at) -> toDateTimeString(),
+            ];
+        });
+
+        return response() -> json([
+            'tokens' => $tokens
+        ]);
     }
 }
