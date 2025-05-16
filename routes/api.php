@@ -30,3 +30,8 @@ Route::middleware('auth:sanctum') -> group(function () {
     Route::get('/attendances', [AttendanceController::class, 'index']);
     Route::get('/attendances/today', [AttendanceController::class, 'statusToday']);
 });
+
+// absensi menggunakan rfid
+Route::post('/attendance/rfid/check-in', [AttendanceController::class, 'rfidCheckIn']);
+Route::post('/attendance/rfid/check-out', [AttendanceController::class, 'rfidCheckOut']);
+Route::get('/attendance/rfid/status', [AttendanceController::class, 'showStatusAttendance']);

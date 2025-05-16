@@ -11,6 +11,9 @@ class Attendance extends Model
         'user_id',
         'date',
         'status',
+        'check_in',
+        'check_out',
+        'rfid_id',
     ];
 
     public function user()
