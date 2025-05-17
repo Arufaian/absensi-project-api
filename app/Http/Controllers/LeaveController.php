@@ -14,9 +14,6 @@ class LeaveController extends Controller
             'reason' => 'required|string|'
         ]);
 
-
-
-
         $leave = $request -> user() -> leaves() -> create([
             'start_date' => $request -> start_date,
             'end_date' => $request -> end_date,
@@ -29,5 +26,14 @@ class LeaveController extends Controller
             'data' => $leave
         ], 201);
 
+    }
+
+    public function index(Request $request)
+    {
+        $leaves = $request -> user() -> leaves() -> get();
+
+        return response() -> json([
+            'leaves' => $leaves
+        ]);
     }
 }

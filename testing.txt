@@ -1,0 +1,14 @@
+// tesing izin
+{
+  "date": "2025-05-16",
+  "reason": "mancing bersama"
+}
+
+
+
+testing cuti
+{
+  "start_date": "2025-05-16",
+  "end_date": "2025-06-05",
+  "reason": "mancing bersama"
+}

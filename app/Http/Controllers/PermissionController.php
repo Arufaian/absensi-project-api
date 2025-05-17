@@ -25,4 +25,14 @@ class PermissionController extends Controller
             'permission' => $permission
         ], 201);
     }
+
+    public function index(Request $request)
+    {
+        // get all permissions for the authenticated user
+        $permissions = $request -> user() -> permissions() -> get();
+
+        return response() -> json([
+            'permissions' => $permissions
+        ]);
+    }
 }

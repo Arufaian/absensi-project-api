@@ -8,7 +8,8 @@ class Permission extends Model
 {
     protected $fillable = [
         'date',
-        'reason'
+        'reason',
+        'status',
     ];
 
     public function user()
