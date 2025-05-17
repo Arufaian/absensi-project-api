@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->date('date');
-            $table->unsignedInteger(2); // contoh: 2 jam
+            $table->unsignedInteger('duration'); // contoh: 2 jam
             $table->enum('status', ['Pending', 'Approved'])->default('Pending');
             $table->timestamps();
         });

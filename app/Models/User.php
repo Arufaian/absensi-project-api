@@ -22,7 +22,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'rfid_id',
         'password',
+        'role'
     ];
 
     /**
@@ -72,5 +74,15 @@ class User extends Authenticatable
     public function salaries()
     {
         return $this->hasMany(Salary::class);
+    }
+
+        public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isOwner()
+    {
+        return $this->role === 'owner';
     }
 }
