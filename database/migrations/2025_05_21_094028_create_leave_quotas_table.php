@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leaves', function (Blueprint $table) {
+        Schema::create('leave_quotas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->text('reason')->nullable();
-            $table->enum('status', ['tertunda', 'disetujui', 'ditolak'])->default('tertunda');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->year('year');
+            $table->integer('total_quota'); // contoh: 12 hari/tahun
+            $table->integer('used_quota')->default(0); // opsional
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leaves');
+        Schema::dropIfExists('leave_quotas');
     }
 };

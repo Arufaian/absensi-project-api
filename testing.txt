@@ -1,7 +1,7 @@
 // tesing izin
 {
   "date": "2025-05-16",
-  "reason": "mancing bersama"
+  "reason": "alasan.."
 }
 
 
@@ -10,5 +10,37 @@ testing cuti
 {
   "start_date": "2025-05-16",
   "end_date": "2025-06-05",
-  "reason": "mancing bersama"
+  "reason": "alasan..."
 }
+
+tesing absensi
+{
+    "rfid_id": "8A074905"
+}
+
+testing pembuatan user
+{
+    "name": "usup",
+    "email": "usup@example.com",
+    "rfid_id": "7BEF3A05",
+    "password": "Password123",
+    "role": "karyawan",
+    "nomor_telepon": "083898782353"
+
+}
+
+testing perhitungan gaji
+{
+  "start_date": "2025-05-01",
+  "end_date": "2025-05-31"
+}
+
+enable server:
+php artisan serve --host=0.0.0.0 --port=8001
+
+
+
+
+7BEF3A05
+8A074905
+DC964B05

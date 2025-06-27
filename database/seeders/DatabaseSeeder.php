@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UserSeeder::class,
-            // AttendanceSeeder::class
+            // UserSeeder::class,
+            AttendanceSeeder::class
         ]);
     }
 }

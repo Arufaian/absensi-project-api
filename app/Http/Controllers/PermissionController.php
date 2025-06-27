@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\ApiResponse;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
+    use ApiResponse;
+
     public function store(Request $request)
     {
         // validate the request
@@ -20,19 +24,14 @@ class PermissionController extends Controller
             'reason' => $request -> reason
         ]);
 
-        return response() -> json([
-            'message' => 'Izin telah dibuat',
-            'permission' => $permission
-        ], 201);
+        return $this->success($permission, "Izin berhasil dibuat", 201);
     }
 
     public function index(Request $request)
     {
-        // get all permissions for the authenticated user
         $permissions = $request -> user() -> permissions() -> get();
 
-        return response() -> json([
-            'permissions' => $permissions
-        ]);
+        return $this->success($permissions, "Data izin berhasil diambil", 200);
+
     }
 }

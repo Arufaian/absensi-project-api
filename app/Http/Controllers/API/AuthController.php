@@ -4,12 +4,16 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Traits\ApiResponse;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    use ApiResponse;
+
     public function register( Request $request){
         // validate the request
         $field = $request -> validate([
@@ -84,6 +88,36 @@ class AuthController extends Controller
     {
         return response()->json($request->user());
     }
+
+    public function update(Request $request)
+    {
+
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'nullable|email|unique:users,email,' . $user->id,
+            'nomor_telepon' => 'nullable|string|max:20',
+            'password' => 'nullable|string|min:6|confirmed',
+        ]);
+
+        // Jika password diisi, hash dulu
+        if (!empty($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']); // Jangan update jika kosong
+        }
+
+        $user->update($validated);
+
+        // return response()->json([
+        //     'message' => 'Data berhasil diperbarui',
+        //     'data' => $user,
+        // ]);
+
+        return $this->success($user, 'Data berhasil diperbarui', 200);
+    }
+
 
     public function activeTokens(Request $request)
     {

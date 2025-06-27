@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->date('date');
             $table->text('reason')->nullable();
-            $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
+            $table->enum('status', ['tertunda', 'disetujui', 'ditolak'])->default('tertunda');
             $table->timestamps();
         });
     }

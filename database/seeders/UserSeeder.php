@@ -20,7 +20,8 @@ class UserSeeder extends Seeder
             'email' => 'owner@example.com',
             'role' => 'owner',
             'rfid_id' => '177013',
-            'password' => Hash::make('password'),
+            'nomor_telepon' => '083897135235',
+            'password' => Hash::make('Password123'),
         ]);
     }
 }

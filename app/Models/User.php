@@ -24,7 +24,10 @@ class User extends Authenticatable
         'email',
         'rfid_id',
         'password',
-        'role'
+        'role',
+        'nomor_telepon',
+        'base_salary',
+        'gaji_harian'
     ];
 
     /**
@@ -74,6 +77,11 @@ class User extends Authenticatable
     public function salaries()
     {
         return $this->hasMany(Salary::class);
+    }
+
+    public function leaveQuotas()
+    {
+        return $this->hasMany(LeaveQuota::class);
     }
 
         public function isAdmin()
